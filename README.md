@@ -1,11 +1,11 @@
-# @khatzie/capacitor-ngenius-payments
+# capacitor-ngenius-payments
 
 Capacitor plugin for N-Genius mobile SDK (iOS/Android)
 
 ## Install
 
 ```bash
-npm install @khatzie/capacitor-ngenius-payments
+npm install capacitor-ngenius-payments
 npx cap sync
 ```
 
@@ -17,4 +17,3 @@ npx cap sync
 <!-- run docgen to generate docs from the source -->
 <!-- More info: https://github.com/ionic-team/capacitor-docgen -->
 </docgen-api>
-# capacitor-ngenius

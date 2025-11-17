@@ -1,4 +1,4 @@
-package com.takliberation.plugins.ngenius;
+package com.khatzie.plugin.ngenius;
 
 import android.util.Log;
 
