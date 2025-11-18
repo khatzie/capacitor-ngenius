@@ -9,6 +9,24 @@ npm install capacitor-ngenius-payments
 npx cap sync
 ```
 
+## Example Usage
+
+```
+import { NgeniusPayments } from 'capacitor-ngenius-payments';
+
+async function pay() {
+  const result = await NgeniusPayments.startPayment({
+    orderReference: "12345",
+    outletId: "your_outlet_id",
+    apiKey: "your_api_key",
+    isSandbox: true
+  });
+
+  console.log("Payment result:", result);
+}
+
+```
+
 ## API
 
 <docgen-index>
