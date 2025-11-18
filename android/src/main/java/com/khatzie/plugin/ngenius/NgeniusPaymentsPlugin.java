@@ -18,7 +18,6 @@ import com.networkinternational.ngenius.model.NGeniusResponse;
 public class NgeniusPaymentsPlugin extends Plugin {
 
     private static final int PAYMENT_REQUEST_CODE = 991;
-
     private PluginCall savedCall;
 
     @PluginMethod
@@ -26,11 +25,12 @@ public class NgeniusPaymentsPlugin extends Plugin {
         Activity activity = getActivity();
 
         String orderReference = call.getString("orderReference");
-        String outletId = call.getString("outletId");
-        String apiKey = call.getString("apiKey");
+        String token = call.getString("token");
+        Double amount = call.getDouble("amount");
+        String currency = call.getString("currency");
         Boolean isSandbox = call.getBoolean("isSandbox", true);
 
-        if (orderReference == null || outletId == null || apiKey == null) {
+        if (orderReference == null || token == null || amount == null || currency == null) {
             call.reject("Missing required parameters");
             return;
         }
@@ -39,8 +39,9 @@ public class NgeniusPaymentsPlugin extends Plugin {
 
         NGeniusRequest request = new NGeniusRequest();
         request.setOrderReference(orderReference);
-        request.setOutletId(outletId);
-        request.setApiKey(apiKey);
+        request.setApiKey(token);
+        request.setAmount(amount);
+        request.setCurrency(currency);
         request.setSandbox(isSandbox);
 
         Intent intent = new Intent(activity, NGeniusPaymentActivity.class);

@@ -1,8 +1,25 @@
-export interface CreatePaymentRequest {
-  amount: number;
-  currency: string;
+export interface StartPaymentOptions {
+  orderReference: string;  // unique order ID
+  amount: number;           // payment amount
+  currency: string;         // currency code, e.g., "AED"
+  token: string;            // N-Genius payment token / API key
+  isSandbox?: boolean;      // optional, defaults to true
+}
+
+export interface PaymentResult {
+  success: boolean;
+  paymentId?: string;
+  message?: string;
+}
+
+export interface CompletePaymentOptions {
   orderReference: string;
-  token: string;
+}
+
+export interface CompletePaymentResult {
+  success: boolean;
+  orderStatus?: string;
+  message?: string;
 }
 
 export interface NgeniusPaymentsPlugin {
@@ -10,18 +27,11 @@ export interface NgeniusPaymentsPlugin {
    * Start a payment flow with N-Genius SDK
    * @param options
    */
-  startPayment(options: {
-    orderRef: string;
-    amount: number;
-    currency: string;
-    token: string;
-  }): Promise<{ status: string; transactionId?: string; message?: string }>;
+  startPayment(options: StartPaymentOptions): Promise<PaymentResult>;
 
   /**
    * Complete a payment (optional, if SDK requires)
    * @param options
    */
-  completePayment(options: {
-    orderRef: string;
-  }): Promise<{ status: string; orderStatus?: string; message?: string }>;
+  completePayment(options: CompletePaymentOptions): Promise<CompletePaymentResult>;
 }
