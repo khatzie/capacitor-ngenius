@@ -5,7 +5,7 @@ export interface CreatePaymentRequest {
   token: string;
 }
 
-export interface NGeniusPaymentsPlugin {
+export interface NgeniusPaymentsPlugin {
   /**
    * Start a payment flow with N-Genius SDK
    * @param options

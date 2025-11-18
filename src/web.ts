@@ -1,8 +1,8 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { NGeniusPaymentsPlugin } from './definitions';
+import type { NgeniusPaymentsPlugin } from './definitions';
 
-export class NGeniusPaymentsWeb extends WebPlugin implements NGeniusPaymentsPlugin {
+export class NgeniusPaymentsWeb extends WebPlugin implements NgeniusPaymentsPlugin {
   async startPayment(_options: any): Promise<any> {
     console.warn('startPayment is not available on web.');
     return { status: 'failed', message: 'Not available on web' };

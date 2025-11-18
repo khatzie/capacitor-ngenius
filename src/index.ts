@@ -1,8 +1,8 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { NGeniusPaymentsPlugin } from './definitions';
+import type { NgeniusPaymentsPlugin } from './definitions';
 
-const NgeniusPayments = registerPlugin<NGeniusPaymentsPlugin>('NgeniusPayments', {
+const NgeniusPayments = registerPlugin<NgeniusPaymentsPlugin>('NgeniusPayments', {
   web: () => import('./web').then((m) => new m.NgeniusPaymentsWeb()),
 });
 
