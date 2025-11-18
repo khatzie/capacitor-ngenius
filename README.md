@@ -11,9 +11,47 @@ npx cap sync
 
 ## API
 
-<docgen-index></docgen-index>
+<docgen-index>
+
+* [`startPayment(...)`](#startpayment)
+* [`completePayment(...)`](#completepayment)
+
+</docgen-index>
 
 <docgen-api>
-<!-- run docgen to generate docs from the source -->
-<!-- More info: https://github.com/ionic-team/capacitor-docgen -->
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### startPayment(...)
+
+```typescript
+startPayment(options: { orderRef: string; amount: number; currency: string; token: string; }) => Promise<{ status: string; transactionId?: string; message?: string; }>
+```
+
+Start a payment flow with N-Genius SDK
+
+| Param         | Type                                                                                |
+| ------------- | ----------------------------------------------------------------------------------- |
+| **`options`** | <code>{ orderRef: string; amount: number; currency: string; token: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ status: string; transactionId?: string; message?: string; }&gt;</code>
+
+--------------------
+
+
+### completePayment(...)
+
+```typescript
+completePayment(options: { orderRef: string; }) => Promise<{ status: string; orderStatus?: string; message?: string; }>
+```
+
+Complete a payment (optional, if SDK requires)
+
+| Param         | Type                               |
+| ------------- | ---------------------------------- |
+| **`options`** | <code>{ orderRef: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ status: string; orderStatus?: string; message?: string; }&gt;</code>
+
+--------------------
+
 </docgen-api>

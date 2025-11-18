@@ -1,8 +1,8 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { NGeniousPaymentsPlugin } from './definitions';
+import type { NGeniusPaymentsPlugin } from './definitions';
 
-const NGeniousPayments = registerPlugin<NGeniousPaymentsPlugin>('NGeniousPayments');
+const NGeniousPayments = registerPlugin<NGeniusPaymentsPlugin>('NGeniousPayments');
 
 export * from './definitions';
 export { NGeniousPayments };
