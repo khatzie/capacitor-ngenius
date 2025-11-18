@@ -33,6 +33,7 @@ async function pay() {
 
 * [`startPayment(...)`](#startpayment)
 * [`completePayment(...)`](#completepayment)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
@@ -42,16 +43,16 @@ async function pay() {
 ### startPayment(...)
 
 ```typescript
-startPayment(options: { orderRef: string; amount: number; currency: string; token: string; }) => Promise<{ status: string; transactionId?: string; message?: string; }>
+startPayment(options: StartPaymentOptions) => Promise<PaymentResult>
 ```
 
 Start a payment flow with N-Genius SDK
 
-| Param         | Type                                                                                |
-| ------------- | ----------------------------------------------------------------------------------- |
-| **`options`** | <code>{ orderRef: string; amount: number; currency: string; token: string; }</code> |
+| Param         | Type                                                                |
+| ------------- | ------------------------------------------------------------------- |
+| **`options`** | <code><a href="#startpaymentoptions">StartPaymentOptions</a></code> |
 
-**Returns:** <code>Promise&lt;{ status: string; transactionId?: string; message?: string; }&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#paymentresult">PaymentResult</a>&gt;</code>
 
 --------------------
 
@@ -59,17 +60,56 @@ Start a payment flow with N-Genius SDK
 ### completePayment(...)
 
 ```typescript
-completePayment(options: { orderRef: string; }) => Promise<{ status: string; orderStatus?: string; message?: string; }>
+completePayment(options: CompletePaymentOptions) => Promise<CompletePaymentResult>
 ```
 
 Complete a payment (optional, if SDK requires)
 
-| Param         | Type                               |
-| ------------- | ---------------------------------- |
-| **`options`** | <code>{ orderRef: string; }</code> |
+| Param         | Type                                                                      |
+| ------------- | ------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#completepaymentoptions">CompletePaymentOptions</a></code> |
 
-**Returns:** <code>Promise&lt;{ status: string; orderStatus?: string; message?: string; }&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#completepaymentresult">CompletePaymentResult</a>&gt;</code>
 
 --------------------
+
+
+### Interfaces
+
+
+#### PaymentResult
+
+| Prop            | Type                 |
+| --------------- | -------------------- |
+| **`success`**   | <code>boolean</code> |
+| **`paymentId`** | <code>string</code>  |
+| **`message`**   | <code>string</code>  |
+
+
+#### StartPaymentOptions
+
+| Prop                 | Type                 |
+| -------------------- | -------------------- |
+| **`orderReference`** | <code>string</code>  |
+| **`amount`**         | <code>number</code>  |
+| **`currency`**       | <code>string</code>  |
+| **`token`**          | <code>string</code>  |
+| **`isSandbox`**      | <code>boolean</code> |
+
+
+#### CompletePaymentResult
+
+| Prop              | Type                 |
+| ----------------- | -------------------- |
+| **`success`**     | <code>boolean</code> |
+| **`orderStatus`** | <code>string</code>  |
+| **`message`**     | <code>string</code>  |
+
+
+#### CompletePaymentOptions
+
+| Prop                 | Type                |
+| -------------------- | ------------------- |
+| **`orderReference`** | <code>string</code> |
 
 </docgen-api>

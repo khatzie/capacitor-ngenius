@@ -1,15 +1,18 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { NgeniusPaymentsPlugin } from './definitions';
+import type { NgeniusPaymentsPlugin, StartPaymentOptions, PaymentResult, CompletePaymentOptions, CompletePaymentResult } from './definitions';
 
 export class NgeniusPaymentsWeb extends WebPlugin implements NgeniusPaymentsPlugin {
-  async startPayment(_options: any): Promise<any> {
-    console.warn('startPayment is not available on web.');
-    return { status: 'failed', message: 'Not available on web' };
+  async startPayment(_options: StartPaymentOptions): Promise<PaymentResult> {
+    console.warn('startPayment is not supported on web');
+    return { success: false, message: 'Web not supported' };
   }
 
-  async completePayment(_options: any): Promise<any> {
-    console.warn('completePayment is not available on web.');
-    return { status: 'failed', message: 'Not available on web' };
+  async completePayment(_options: CompletePaymentOptions): Promise<CompletePaymentResult> {
+    console.warn('completePayment is not supported on web');
+    return { success: false, message: 'Web not supported' };
   }
 }
+
+const NgeniusPayments = new NgeniusPaymentsWeb();
+export { NgeniusPayments };

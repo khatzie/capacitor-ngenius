@@ -25,12 +25,13 @@ public class NgeniusPaymentsPlugin extends Plugin {
         Activity activity = getActivity();
 
         String orderReference = call.getString("orderReference");
-        String token = call.getString("token");
+        String outletId = call.getString("outletId");
+        String apiKey = call.getString("token");
         Double amount = call.getDouble("amount");
         String currency = call.getString("currency");
         Boolean isSandbox = call.getBoolean("isSandbox", true);
 
-        if (orderReference == null || token == null || amount == null || currency == null) {
+        if (orderReference == null || outletId == null || apiKey == null || amount == null || currency == null) {
             call.reject("Missing required parameters");
             return;
         }
@@ -39,7 +40,8 @@ public class NgeniusPaymentsPlugin extends Plugin {
 
         NGeniusRequest request = new NGeniusRequest();
         request.setOrderReference(orderReference);
-        request.setApiKey(token);
+        request.setOutletId(outletId);
+        request.setApiKey(apiKey);
         request.setAmount(amount);
         request.setCurrency(currency);
         request.setSandbox(isSandbox);
@@ -73,5 +75,22 @@ public class NgeniusPaymentsPlugin extends Plugin {
         result.put("success", false);
         result.put("message", "Payment cancelled or failed");
         savedCall.resolve(result);
+    }
+
+    @PluginMethod
+    public void completePayment(PluginCall call) {
+        String orderReference = call.getString("orderReference");
+
+        if (orderReference == null) {
+            call.reject("Missing orderReference");
+            return;
+        }
+
+        // TODO: Implement backend call to verify payment
+        JSObject result = new JSObject();
+        result.put("success", true);
+        result.put("orderStatus", "PAID");
+        result.put("message", "Payment verified");
+        call.resolve(result);
     }
 }
